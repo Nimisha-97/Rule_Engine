@@ -1,5 +1,8 @@
 package com.wipro.rule;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "rules")
 public class Rules {
 	
 	private String name;
