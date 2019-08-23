@@ -60,7 +60,7 @@ public class RuleEngineController {
 				if(x!=null && tname.equalsIgnoreCase(x.getRigletName()))
 				{
 		mongoService.removeAchievements(tname);
-		//KieSession session=new DroolConfig().getKieSession();
+		KieSession session=new DroolConfig().getKieSession();
 		Team p=mongoService.updateScmReward(tname);
 		session.insert(p);
 		System.out.println(p.getName());
