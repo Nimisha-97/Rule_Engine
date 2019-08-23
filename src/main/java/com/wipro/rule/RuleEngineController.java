@@ -108,11 +108,14 @@ public class RuleEngineController {
 		return team;
 	}
 	@RequestMapping(value="/nims",method=RequestMethod.POST)
-	public  String game(@RequestBody  Rules rules ) throws Exception
+	public  List<Rules> game(@RequestBody  Rules rules ) throws Exception
 	{
-		 System.out.println(rules.getmName());
-		return new ServiceMongo().concatTemplate(rules);
+		List<Rules> rule;
+		rule=mongoTemplate.findAll(Rules.class);
 		
+		 System.out.println(rules.getmName());
+		//return new ServiceMongo().concatTemplate(rules);
+		return new ServiceMongo().updateDrl(rule);
 	}
 }
 
