@@ -34,13 +34,15 @@ import com.wipro.rule.Team;;
 @Service
 public class ServiceMongo {
 	@Autowired
-	private MongoTemplate mongoTemplate;
+	private static MongoTemplate mongoTemplate;
 	
 	@Autowired
     ServiceMongo mongoService;
 	
 	@Autowired
 	private TeamRepository teamRepository;
+	@Autowired
+	private RuleRepository ruleRepository;
 	
 	@Autowired
     ResourceLoader resourceLoader;
@@ -228,6 +230,7 @@ public String fileloading() throws Exception {
                 	if(rule[1].replace("\"", "").equalsIgnoreCase(name))
                 	{
                 		x=0;
+                		break;
                 	}
                 	else
                 	{
@@ -289,6 +292,15 @@ public String fileloading() throws Exception {
 		 */
 	       
 	      
+	}
+	public  List<Rules> updateDrl(List<Rules> rule) throws Exception
+	{
+		for (Rules rules : rule) {
+			concatTemplate(rules);
+		}
+		//System.out.println(rules);
+		return rule;
+		
 	}
 
 }
